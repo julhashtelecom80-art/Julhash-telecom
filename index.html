@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0756b7">
+<title>JULHASH TELECOM</title>
+<style>
+:root{--blue:#0756b7;--navy:#07366e;--pale:#eef6ff;--ink:#122744;--muted:#60738d;--line:#dce8f6}
+*{box-sizing:border-box}body{margin:0;background:#edf3fb;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}
+.app{max-width:480px;min-height:100vh;margin:auto;background:#f8fbff;box-shadow:0 0 28px #16345b22;padding-bottom:82px}
+header{background:linear-gradient(135deg,#07366e,#0878df);color:white;padding:22px 18px 24px;border-radius:0 0 24px 24px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:55px;height:55px;border-radius:16px;background:#fff;color:#0756b7;display:grid;place-items:center;font-weight:900;font-size:22px;box-shadow:0 4px 15px #001c4433}
+h1{font-size:20px;margin:0;letter-spacing:.3px}header p{margin:4px 0 0;color:#dbeeff;font-size:13px}
+.welcome{margin-top:24px;font-size:22px;font-weight:750}.sub{font-size:13px;color:#dcecff;margin-top:4px}
+.balance{margin:18px 16px 0;background:#fff;color:var(--ink);border-radius:18px;padding:15px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 24px #001f4a22}
+.balance small{color:var(--muted)}.balance strong{display:block;font-size:22px;margin-top:4px}.pill{background:#e7f2ff;color:var(--blue);border:0;border-radius:12px;padding:10px 12px;font-weight:700}
+main{padding:18px 16px}.section-title{font-size:17px;font-weight:800;margin:5px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.service{border:1px solid var(--line);background:#fff;border-radius:16px;padding:13px 4px;text-align:center;cursor:pointer;color:var(--ink);font-weight:650;font-size:12px;box-shadow:0 3px 10px #153e6b08}.service .ico{width:42px;height:42px;border-radius:14px;margin:0 auto 8px;display:grid;place-items:center;font-size:21px;background:#e7f2ff;color:var(--blue)}
+.banner{margin:20px 0;background:linear-gradient(120deg,#0877df,#073d83);color:#fff;border-radius:18px;padding:17px}.banner b{font-size:17px}.banner p{margin:5px 0 0;font-size:12px;color:#d9edff}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 5px 15px #143c6810}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}input,select{width:100%;border:1px solid #cfdeef;border-radius:12px;padding:13px;font:inherit;background:#fff;color:var(--ink)}.operators{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:8px}.op{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 2px;font-size:11px;cursor:pointer}.op.active{border:2px solid var(--blue);background:#eaf4ff;color:var(--blue);font-weight:800}
+.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.amt{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px;cursor:pointer;font-weight:700}.amt.active{background:#e7f2ff;border-color:var(--blue);color:var(--blue)}
+.primary{width:100%;border:0;border-radius:13px;padding:14px;background:linear-gradient(100deg,#0869d3,#064caa);color:white;font:inherit;font-weight:800;margin-top:16px;cursor:pointer}.primary:active{transform:scale(.99)}
+.offer{display:flex;gap:12px;align-items:center}.operator-logo{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#e8f4ff;font-size:22px}.offer p{font-size:12px;color:var(--muted);margin:4px 0}.offer .price{font-weight:850;color:var(--blue);white-space:nowrap}
+.paygrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.pay{border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px;text-align:center;cursor:pointer}.pay.active{border:2px solid var(--blue);background:#eef6ff}.pay span{display:block;font-size:24px;margin-bottom:5px}.notice{padding:12px;border-radius:12px;background:#fff5d9;color:#78500b;font-size:12px;line-height:1.6;margin-top:12px}
+.contact-row{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.contact-row:last-child{border:0}.contact-row span{font-size:21px}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:9px 5px calc(9px + env(safe-area-inset-bottom));z-index:3}
+nav button{border:0;background:none;color:#778ba4;font-size:11px;font-weight:700;cursor:pointer}nav button span{display:block;font-size:20px;margin-bottom:2px}nav button.active{color:var(--blue)}
+.page{display:none}.page.active{display:block}.toast{display:none;position:fixed;top:15px;left:50%;transform:translateX(-50%);background:#102b4e;color:#fff;padding:12px 16px;border-radius:12px;z-index:10;width:max-content;max-width:90%;box-shadow:0 5px 20px #0003;font-size:13px}.toast.show{display:block}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+</style></head>
+<body><div class="app">
+<header><div class="brand"><div class="logo">JT</div><div><h1>JULHASH TELECOM</h1><p>Stay Connected • Stay Ahead</p></div></div><div class="welcome">আপনাকে স্বাগতম 👋</div><div class="sub">রিচার্জ, অফার ও পেমেন্ট—এক জায়গায়</div></header>
+<div class="balance"><div><small>প্রোটোটাইপ ওয়ালেট ব্যালেন্স</small><strong>৳ ০.০০</strong></div><button class="pill" onclick="go('payments')">পেমেন্ট অপশন</button></div>
+<main>
+<section id="home" class="page active">
+<div class="section-title">সার্ভিস বেছে নিন</div><div class="grid">
+<button class="service" onclick="go('recharge')"><div class="ico">📱</div>রিচার্জ</button><button class="service" onclick="go('offers')"><div class="ico">🎁</div>অফার</button><button class="service" onclick="go('contact')"><div class="ico">☎️</div>যোগাযোগ</button><button class="service" onclick="go('payments')"><div class="ico">💳</div>পেমেন্ট</button><button class="service" onclick="go('history')"><div class="ico">🧾</div>লেনদেন</button><button class="service" onclick="go('accounts')"><div class="ico">📒</div>দৈনিক হিসাব</button><button class="service" onclick="go('customers')"><div class="ico">👥</div>কাস্টমার</button><button class="service" onclick="go('settings')"><div class="ico">⚙️</div>সেটিংস</button>
+</div><div class="banner"><b>আপনার টেলিকম সেবা, আরও সহজ</b><p>সব অপারেটরের রিচার্জ ও প্যাকেজ দেখার জন্য দ্রুত প্রবেশ করুন।</p></div>
+<div class="section-title">জনপ্রিয় অফার</div>
+<div class="card offer"><div class="operator-logo">📶</div><div style="flex:1"><b>ইন্টারনেট প্যাক</b><p>ডেমো অফার · ৭ দিন</p></div><div class="price">৳ ১২৯</div></div>
+<div class="card offer"><div class="operator-logo">☎️</div><div style="flex:1"><b>মিনিট প্যাক</b><p>ডেমো অফার · ৩ দিন</p></div><div class="price">৳ ৮৯</div></div>
+<p class="small">এটি একটি ডেমো প্রোটোটাইপ। এখানে বাস্তব রিচার্জ বা টাকা লেনদেন হয় না।</p>
+</section>
+<section id="recharge" class="page"><div class="section-title">মোবাইল রিচার্জ</div><div class="card">
+<label for="phone">মোবাইল নম্বর</label><input id="phone" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX">
+<label>অপারেটর নির্বাচন</label><div class="operators"><button class="op active" data-op="Grameenphone" onclick="operator(this)">GP</button><button class="op" data-op="Robi" onclick="operator(this)">Robi</button><button class="op" data-op="Banglalink" onclick="operator(this)">BL</button><button class="op" data-op="Teletalk" onclick="operator(this)">TT</button></div>
+<label>রিচার্জের পরিমাণ</label><div class="amounts"><button class="amt" onclick="amount(this,50)">৳ ৫০</button><button class="amt active" onclick="amount(this,100)">৳ ১০০</button><button class="amt" onclick="amount(this,200)">৳ ২০০</button><button class="amt" onclick="amount(this,300)">৳ ৩০০</button><button class="amt" onclick="amount(this,500)">৳ ৫০০</button><button class="amt" onclick="amount(this,1000)">৳ ১০০০</button></div>
+<label for="rtype">রিচার্জ ধরন</label><select id="rtype"><option>প্রিপেইড</option><option>পোস্টপেইড</option></select>
+<button class="primary" onclick="recharge()">রিচার্জের অনুরোধ দেখুন</button><div class="notice">ডেমো মোড: অনুরোধটি শুধু যাচাই হবে; টাকা কাটা বা রিচার্জ সম্পন্ন হবে না।</div></div></section>
+<section id="offers" class="page"><div class="section-title">বিশেষ অফার</div><p class="small">নিচের প্যাকেজগুলো নমুনা হিসেবে দেখানো হয়েছে। প্রকৃত মূল্য ও মেয়াদ অপারেটর/API থেকে নিতে হবে।</p>
+<div class="card offer"><div class="operator-logo">🔵</div><div style="flex:1"><b>ইন্টারনেট — ১০ GB</b><p>Grameenphone · ৭ দিন</p></div><div><div class="price">৳ ১২৯</div><button class="pill" onclick="chooseOffer(129)">নিন</button></div></div>
+<div class="card offer"><div class="operator-logo">🔴</div><div style="flex:1"><b>ইন্টারনেট — ৫ GB</b><p>Robi · ৩ দিন</p></div><div><div class="price">৳ ৮৯</div><button class="pill" onclick="chooseOffer(89)">নিন</button></div></div>
+<div class="card offer"><div class="operator-logo">🟠</div><div style="flex:1"><b>ইন্টারনেট — ১৫ GB</b><p>Banglalink · ৭ দিন</p></div><div><div class="price">৳ ১৯৯</div><button class="pill" onclick="chooseOffer(199)">নিন</button></div></div>
+<div class="card offer"><div class="operator-logo">🟢</div><div style="flex:1"><b>ইন্টারনেট — ৩ GB</b><p>Teletalk · ৩ দিন</p></div><div><div class="price">৳ ৬৯</div><button class="pill" onclick="chooseOffer(69)">নিন</button></div></div></section>
+<section id="payments" class="page"><div class="section-title">পেমেন্ট পদ্ধতি</div>
+<div class="card" style="border:1px solid #b9d7f5">
+<b>🌐 অনলাইন সার্ভার স্ট্যাটাস</b>
+<div id="serverStatus" class="small" style="margin-top:8px">সার্ভারের ঠিকানা সেট করা হয়নি।</div>
+<button class="pill" style="margin-top:10px" onclick="checkServer()">সার্ভার পরীক্ষা করুন</button>
+</div>
+<div class="card"><p class="small">বিকাশ Checkout চালুর জন্য পেমেন্টের পরিমাণ লিখে বিকাশ নির্বাচন করুন। সার্ভার সংযুক্ত না হওয়া পর্যন্ত কোনো টাকা নেওয়া হবে না।</p><div class="paygrid"><button class="pay" onclick="pay(this,'bKash')"><span>💗</span>bKash</button><button class="pay" onclick="pay(this,'Nagad')"><span>🟠</span>নগদ</button><button class="pay" onclick="pay(this,'Rocket')"><span>🟣</span>Rocket</button><button class="pay" onclick="pay(this,'Card')"><span>💳</span>কার্ড</button></div><div id="payselected" class="small" style="margin-top:12px">এখনও কোনো পদ্ধতি নির্বাচন করা হয়নি।</div>
+<div class="notice" style="background:#fce8f1;color:#8a174b"><b>bKash মার্চেন্ট পেমেন্ট নম্বর</b><br><span style="font-size:20px;font-weight:800;letter-spacing:1px">01353265806</span><br>পেমেন্ট করার আগে নম্বরটি মিলিয়ে নিন। ম্যানুয়াল পেমেন্ট করলে ট্রানজেকশন আইডি সংরক্ষণ করুন।</div>
+<label for="paymentAmount">পেমেন্টের পরিমাণ (৳)</label><input id="paymentAmount" type="number" inputmode="decimal" min="1" max="500000" step="0.01" value="100" placeholder="যেমন: ১০০"><button class="primary" id="bkashPayButton" onclick="startBkashPayment()">বিকাশ দিয়ে পেমেন্ট করুন</button><div id="paymentStatus" class="small" role="status" style="margin-top:10px"></div><div class="notice">নিরাপত্তা: bKash App Key/Secret শুধু সার্ভারে রাখবেন। PIN বা OTP এই অ্যাপে চাইবেন না। পেমেন্ট সফল হয়েছে কি না সার্ভারে যাচাই না করে অর্ডার সম্পন্ন দেখাবেন না।</div></div></section>
+<section id="contact" class="page"><div class="section-title">যোগাযোগ করুন</div><div class="card"><div class="contact-row"><span>📞</span><div><b>ফোন</b><div class="small">01353265806</div></div></div><div class="contact-row"><span>📍</span><div><b>দোকানের ঠিকানা</b><div class="small">আপনার ঠিকানা যোগ করুন</div></div></div><div class="contact-row"><span>✉️</span><div><b>ইমেইল</b><div class="small">আপনার ব্যবসার ইমেইল যোগ করুন</div></div></div><div class="contact-row"><span>🕒</span><div><b>খোলার সময়</b><div class="small">সময় পরে সেট করা যাবে</div></div></div><button class="primary" onclick="toast('আপনার যোগাযোগের তথ্য যোগ করলে এই অংশটি সম্পূর্ণ হবে।')">যোগাযোগের তথ্য সেট করুন</button></div></section>
+
+<section id="history" class="page"><div class="section-title">লেনদেনের ইতিহাস</div><div class="card"><p class="small">এই ডেমোতে শুধু এই সেশনের অনুরোধ দেখানো হবে। অ্যাপ বন্ধ করলে তথ্য সংরক্ষিত নাও থাকতে পারে।</p><div id="historylist"><p class="small">এখনও কোনো অনুরোধ নেই।</p></div><button class="primary" onclick="clearHistory()">ইতিহাস মুছুন</button></div></section>
+<section id="accounts" class="page"><div class="section-title">দৈনিক দোকানের হিসাব</div><div class="card"><label for="saleAmount">বিক্রির পরিমাণ (৳)</label><input id="saleAmount" inputmode="decimal" type="number" min="0" placeholder="যেমন: ১৫০০"><label for="costAmount">খরচের পরিমাণ (৳)</label><input id="costAmount" inputmode="decimal" type="number" min="0" placeholder="যেমন: ২০০"><label for="accountNote">বিবরণ</label><input id="accountNote" placeholder="যেমন: মোবাইল রিচার্জ বিক্রি"><button class="primary" onclick="addAccount()">হিসাব যোগ করুন</button><div class="card"><b>আজকের মোট হিসাব</b><p>মোট বিক্রি: <strong id="totalSales">৳ ০</strong></p><p>মোট খরচ: <strong id="totalCosts">৳ ০</strong></p><p>আনুমানিক লাভ: <strong id="totalProfit">৳ ০</strong></p></div><div id="accountList" class="small">এখনও হিসাব যোগ করা হয়নি।</div></div></section>
+<section id="customers" class="page"><div class="section-title">কাস্টমার তালিকা</div><div class="card"><label for="custName">কাস্টমারের নাম</label><input id="custName" placeholder="নাম লিখুন"><label for="custPhone">মোবাইল নম্বর</label><input id="custPhone" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX"><button class="primary" onclick="addCustomer()">কাস্টমার যোগ করুন</button><div id="customerList" class="small" style="margin-top:14px">এখনও কোনো কাস্টমার যোগ করা হয়নি।</div></div></section>
+<section id="settings" class="page"><div class="section-title">অ্যাপ সেটিংস</div><div class="card"><label for="shopName">দোকানের নাম</label><input id="shopName" value="JULHASH TELECOM"><label for="shopAddress">দোকানের ঠিকানা</label><input id="shopAddress" value="বালিয়া বাজার, ফুলপুর, ময়মনসিংহ"><label for="shopPhone">দোকানের ফোন নম্বর</label><input id="shopPhone" inputmode="numeric" placeholder="আপনার দোকানের নম্বর"><button class="primary" onclick="saveSettings()">সেটিংস সংরক্ষণ করুন</button><p class="small">এটি ডেমো সেটিংস। বাস্তব ব্যবহারকারীর অ্যাকাউন্ট, ক্লাউড ব্যাকআপ ও নিরাপত্তার জন্য আলাদা ব্যাকএন্ড লাগবে।</p></div></section>
+</main>
+<nav><button class="active" data-page="home" onclick="go('home')"><span>⌂</span>হোম</button><button data-page="recharge" onclick="go('recharge')"><span>📱</span>রিচার্জ</button><button data-page="offers" onclick="go('offers')"><span>🎁</span>অফার</button><button data-page="payments" onclick="go('payments')"><span>💳</span>পেমেন্ট</button></nav>
+</div><div class="toast" id="toast"></div>
+<script>
+// একই ডোমেইনে Backend deploy করলে API_BASE ফাঁকা রাখুন।
+// আলাদা Backend URL হলে নিচে আপনার HTTPS URL বসান; উদাহরণ: https://your-service.onrender.com
+const API_BASE = '';
+let selectedOperator='Grameenphone',selectedAmount=100,selectedPay='';
+let demoHistory=[], accounts=[], customers=[];
+function go(id){
+  const target = document.getElementById(id);
+  if (!target || !target.classList.contains('page')) {
+    toast('এই অপশনটি পাওয়া যায়নি।');
+    return;
+  }
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.toggle('active', p.id === id);
+  });
+  document.querySelectorAll('nav button').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.page === id);
+  });
+  window.scrollTo(0, 0);
+  if (id !== 'home') toast('Coming Soon 🚧');
+}
+
+// Backup click handling for service tiles and bottom navigation.
+document.addEventListener('click', function(event) {
+  const button = event.target.closest('button');
+  if (!button) return;
+  const inline = button.getAttribute('onclick') || '';
+  const match = inline.match(/go\(['\"]([a-z]+)['\"]\)/);
+  const pageId = match ? match[1] : button.getAttribute('data-page');
+  if (pageId && document.getElementById(pageId) &&
+      document.getElementById(pageId).classList.contains('page')) {
+    event.preventDefault();
+    go(pageId);
+  }
+});
+function operator(el){document.querySelectorAll('.op').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedOperator=el.dataset.op}
+function amount(el,n){document.querySelectorAll('.amt').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedAmount=n}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)}
+function recharge(){let n=document.getElementById('phone').value.trim();if(!/^01[3-9]\d{8}$/.test(n)){toast('সঠিক ১১ সংখ্যার বাংলাদেশি মোবাইল নম্বর দিন।');return}demoHistory.unshift({text:'রিচার্জ অনুরোধ · '+selectedOperator+' · '+n+' · ৳'+selectedAmount});renderHistory();toast('ডেমো অনুরোধ যোগ হয়েছে। বাস্তব রিচার্জ চালু নেই।')}
+function pay(el,name){document.querySelectorAll('.pay').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedPay=name;document.getElementById('payselected').textContent='নির্বাচিত পদ্ধতি: '+name+(name==='bKash'?' — Checkout বাটন ব্যবহার করুন।':' — এই পদ্ধতির গেটওয়ে এখনো যুক্ত হয়নি।');document.getElementById('bkashPayButton').textContent=name==='bKash'?'বিকাশ দিয়ে পেমেন্ট করুন':name+' পেমেন্ট (সংযুক্ত নয়)'}
+async function checkServer(){
+  const el=document.getElementById('serverStatus');
+  el.textContent='সার্ভারের সঙ্গে যোগাযোগ করা হচ্ছে…';
+  try{
+    const r=await fetch((API_BASE||'')+'/api/health',{method:'GET',cache:'no-store'});
+    const d=await r.json();
+    if(!r.ok || d.status!=='ok') throw new Error('সার্ভার প্রস্তুত নয়');
+    el.textContent='✅ অনলাইন সার্ভার সচল'+(d.service?' · '+d.service:'');
+  }catch(e){
+    el.textContent='❌ সার্ভার পাওয়া যায়নি। Backend deploy করে API_BASE ঠিকানা সেট করুন।';
+  }
+}
+async function startBkashPayment(){
+  const status=document.getElementById('paymentStatus');
+  const button=document.getElementById('bkashPayButton');
+  const amount=Number(document.getElementById('paymentAmount').value);
+  if(selectedPay!=='bKash'){toast('আগে বিকাশ পদ্ধতি নির্বাচন করুন।');return}
+  if(!Number.isFinite(amount)||amount<1||amount>500000){toast('১ থেকে ৫০০,০০০ টাকার মধ্যে সঠিক পরিমাণ দিন।');return}
+  status.textContent='নিরাপদ পেমেন্ট সার্ভারের সঙ্গে সংযোগ করা হচ্ছে…';
+  button.disabled=true;
+  try{
+    // Implement this endpoint on your own HTTPS backend before going live.
+    const response=await fetch((API_BASE||'')+'/api/bkash/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:JSON.stringify({amount:amount.toFixed(2),currency:'BDT'})});
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(data.message||'পেমেন্ট সার্ভার প্রস্তুত নয়।');
+    if(!data.bkashURL||typeof data.bkashURL!=='string'||!/^https:\/\//i.test(data.bkashURL))throw new Error('সার্ভার থেকে বৈধ bKash Checkout URL পাওয়া যায়নি।');
+    window.location.assign(data.bkashURL);
+  }catch(error){
+    status.textContent='এখনো বাস্তব পেমেন্ট চালু হয়নি: '+(error.message||'সার্ভারের সঙ্গে সংযোগ হয়নি।')+' আগে HTTPS ব্যাকএন্ড /api/bkash/create-payment তৈরি ও সংযুক্ত করুন।';
+    toast('পেমেন্ট সার্ভার এখনো সংযুক্ত নয়।');
+  }finally{button.disabled=false;}
+}
+function chooseOffer(price){go('recharge');selectedAmount=price;document.querySelectorAll('.amt').forEach(b=>b.classList.toggle('active',Number(b.textContent.replace(/[^\d]/g,''))===price));toast('৳'+price+' প্যাকেজটি নির্বাচিত। নমুনা প্যাকেজ যাচাই করুন।')}
+
+function renderHistory(){let el=document.getElementById('historylist');if(!el)return;el.innerHTML=demoHistory.length?demoHistory.map(x=>'<div class="contact-row"><span>🧾</span><div>'+escapeText(x.text)+'</div></div>').join(''):'<p class="small">এখনও কোনো অনুরোধ নেই।</p>'}
+function clearHistory(){demoHistory=[];renderHistory();toast('ডেমো ইতিহাস মুছে ফেলা হয়েছে।')}
+function addAccount(){let sale=Number(document.getElementById('saleAmount').value||0),cost=Number(document.getElementById('costAmount').value||0),note=document.getElementById('accountNote').value.trim()||'বিবরণ নেই';if(sale<0||cost<0||(!sale&&!cost)){toast('বিক্রি বা খরচের একটি সঠিক পরিমাণ দিন।');return}accounts.push({sale,cost,note});document.getElementById('totalSales').textContent='৳ '+accounts.reduce((a,x)=>a+x.sale,0);document.getElementById('totalCosts').textContent='৳ '+accounts.reduce((a,x)=>a+x.cost,0);document.getElementById('totalProfit').textContent='৳ '+(accounts.reduce((a,x)=>a+x.sale-x.cost,0));document.getElementById('accountList').innerHTML=accounts.map(x=>'<div class="contact-row"><span>📒</span><div>'+escapeText(x.note)+'<div class="small">বিক্রি: ৳ '+x.sale+' · খরচ: ৳ '+x.cost+'</div></div></div>').join('');document.getElementById('saleAmount').value='';document.getElementById('costAmount').value='';document.getElementById('accountNote').value='';toast('দৈনিক হিসাব যোগ হয়েছে।')}
+function addCustomer(){let name=document.getElementById('custName').value.trim(),phone=document.getElementById('custPhone').value.trim();if(!name){toast('কাস্টমারের নাম লিখুন।');return}if(!/^01[3-9]\d{8}$/.test(phone)){toast('সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।');return}customers.push({name,phone});document.getElementById('customerList').innerHTML=customers.map(x=>'<div class="contact-row"><span>👤</span><div><b>'+escapeText(x.name)+'</b><div class="small">'+escapeText(x.phone)+'</div></div></div>').join('');document.getElementById('custName').value='';document.getElementById('custPhone').value='';toast('কাস্টমার ডেমো তালিকায় যোগ হয়েছে।')}
+function saveSettings(){let name=document.getElementById('shopName').value.trim();if(!name){toast('দোকানের নাম লিখুন।');return}document.querySelector('h1').textContent=name;document.querySelector('.logo').textContent=name.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();toast('সেটিংস এই ডেমো সেশনে প্রয়োগ হয়েছে।')}
+function escapeText(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+</script></body></html>
